@@ -2,11 +2,11 @@ require('dotenv').config();  // ← PEHLI LINE
 
 const express = require('express');
 const cors = require('cors');
-const { connectDB } = require('./config/db');
-const authRoute = require('./routes/authRoute');
-const menuRoute = require('./routes/menuRoutes')
-const orderRoute = require('./routes/orderRoutes')
-const walletRoute = require('./routes/walletRoute')
+const { connectDB } = require('./src/config/db');
+const authRoute = require('./src/routes/authRoute');
+const menuRoute = require('./src/routes/menuRoutes')
+const orderRoute = require('./src/routes/orderRoutes')
+const walletRoute = require('./src/routes/walletRoute')
 // const { Menus, SubMenus, MenuItems } = require('./models/Menu');
 // const {Wallet} = require('./models/Wallet')
 // const { Inventory_history} = require('./models/Inventory_history')
