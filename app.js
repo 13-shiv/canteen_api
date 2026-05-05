@@ -1,4 +1,4 @@
-require('dotenv').config();  // ← PEHLI LINE
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
@@ -33,15 +33,9 @@ const PORT = process.env.PORT || 3000;
 
 
 const start = async () => {
-  try {
-    await connectDB();
-    console.log("✅ DB connected");
-  } catch (error) {
-    console.error("❌ DB failed but server starting:", error);
-  }
-
+  await connectDB();
   app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`🚀 Server: http://localhost:${PORT}`);
   });
 };
 
