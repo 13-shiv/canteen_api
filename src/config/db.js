@@ -20,7 +20,7 @@ const connectDB = async () => {
     await sequelize.sync({ force : false });   // alter : true  in db again n again index is created and db storage is full
     console.log('Tables ready!');
   } catch (error) {
-    console.error('❌ DB Error:', error);
+   console.error('DB FULL ERROR:', error);
     process.exit(1);
   }
 };
