@@ -1,3 +1,4 @@
+const { DESCRIBE } = require('sequelize/lib/query-types');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
@@ -76,7 +77,35 @@ exports.login = async(req,res)=>{
 exports.profile = async(req,res)=>{
 
     try{
-        const user = await User.findByPk(req.user.id);
+        const user = await User.findByPk(req.user.id,{
+           attributes:[
+            'id',
+            'name',
+            'email',
+            'phone',
+            'role',
+            'employee_id',
+            'wallet_balance',  
+            'is_active',
+            'created_at'
+           ],
+           include:[{
+            model: WalletTransaction,
+            as : 'walletTransaction',
+            limit:5,
+            order:[['created_at', 'DESC']],
+            attributes:[
+                'id',
+                'type',
+                'amount',
+                'balance_before',
+                'balance_after',
+                'description',
+                'created_at',
+            ]
+           }] 
+        });
+        console.log("User Information", user)
         if(!user){
             return res.status(404).json({
                 sucess:false,
