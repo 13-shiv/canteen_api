@@ -38,13 +38,7 @@ const User = sequelize.define('User',{
         type:DataTypes.DECIMAL(10,2),
         defaultValue: 0.00, 
     },
-    is_active:
-    {
-        type:DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue : true
-
-    },
+  
 },
     {
         tableName:'users',
