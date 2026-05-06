@@ -86,12 +86,12 @@ exports.profile = async(req,res)=>{
             'role',
             'employee_id',
             'wallet_balance',  
-            'is_active',
             'created_at'
            ],
            include:[{
             model: WalletTransaction,
             as : 'walletTransaction',
+            separate: true,
             limit:5,
             order:[['created_at', 'DESC']],
             attributes:[
@@ -108,19 +108,19 @@ exports.profile = async(req,res)=>{
         console.log("User Information", user)
         if(!user){
             return res.status(404).json({
-                sucess:false,
+                success:false,
                 message :"User Not Found"
             })
         }
         return res.status(200).json({
-            sucess:true,
+            success:true,
             message :"User Profile",
             data:{ user}
         })
     }catch(error){
      return res.status(500).json({
 
-            sucess:false,
+            success:false,
             message :error.message
         })
     }
